@@ -36,12 +36,20 @@ const Tiles = styled.div`
 
 const Header = styled.div`
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr auto 1fr;
     margin-bottom: 1em;
     align-items: center;
 `;
 
-const Links = styled.div``;
+const Links = styled.div`
+    text-align: right;
+`;
+
+const Title = styled.div`
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.4em;
+`;
 
 function Dashboard() {
     const [posts, setPosts] = useState<Post[]>([]);
@@ -85,6 +93,7 @@ function Dashboard() {
                     placeholder="Sort"
                     style={{width: 100}}
                 />
+                <Title>PokePals</Title>
                 <Links>
                     <a href={"https://github.com/duiker101/reddit-pokepals"}>
                         GitHub
