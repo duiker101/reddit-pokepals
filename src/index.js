@@ -1,8 +1,32 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import Dashboard from "./Dashboard";
 import * as serviceWorker from "./serviceWorker";
+import {ThemeProvider} from "styled-components";
+import localforage from "localforage";
+import {VisitedWrapper} from "./CodesContext";
+import "rsuite/dist/styles/rsuite-default.css";
+
+const theme = {
+    breakpoints: {
+        xs: "0px",
+        sm: "576px",
+        md: "768px",
+        lg: "992px",
+        xl: "1200px",
+    },
+};
+
+localforage.setDriver(localforage.LOCALSTORAGE);
+
+const App = () => (
+    <ThemeProvider theme={theme}>
+        <VisitedWrapper>
+            <Dashboard />
+        </VisitedWrapper>
+    </ThemeProvider>
+);
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
