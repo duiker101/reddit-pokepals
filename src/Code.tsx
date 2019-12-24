@@ -10,12 +10,13 @@ import copy from "copy-to-clipboard";
 import copyImg from "./copy.svg";
 import {Alert} from "rsuite";
 
-const Wrapper = styled.div<{visited: boolean}>`
+const Wrapper = styled.div<{visited: boolean; border: string | null}>`
     display: grid;
     grid-template-rows: auto 1fr;
     padding: 10px;
     border-radius: 0.4em;
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 1px 1px 10px
+        ${p => (p.border ? p.border : `rgba(0, 0, 0, 0.05)`)};
     border: 1px solid rgba(0, 0, 0, 0.05);
     background: white;
     ${p => p.visited && `opacity:.5`}
@@ -94,13 +95,33 @@ const Code: React.FC<Props> = props => {
         window.open(post.url, "_blank");
     };
 
+    const team = post.author_flair_text.match(/Team (\w+)/);
+    const teamColors = {
+        valor: "rgba(255,0,0,0.4)",
+        mystic: "rgba(0,0,255,0.4)",
+        instinct: "rgba(255,255,0,0.4)",
+    };
+    let teamColor = null;
+
+    if (!!team) teamColor = teamColors[team[1].toLowerCase()];
+
+    const playerName = post.author_flair_text.match(/- ([a-zA-Z\d]+)$/);
+
     return (
-        <Wrapper visited={visited.includes(code)}>
+        <Wrapper visited={visited.includes(code)} border={teamColor}>
             {image && <QRImage onClick={copyCode} src={image} />}
             <Details>
                 <Title onClick={openPost}>{post.title}</Title>
                 Posted <Posted>{timeDiff}</Posted> ago by{" "}
                 <Author>u/{post.author}</Author>
+                {/*<div>{prettyCode}</div>*/}
+                {playerName && (
+                    <div>
+                        <Author>
+                            IGN: <b>{playerName[1]}</b>
+                        </Author>
+                    </div>
+                )}
             </Details>
             <CopyImg src={copyImg} onClick={copyCode} />
         </Wrapper>
