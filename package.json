@@ -1,5 +1,5 @@
 {
-    "name": "reddit-pokemon-go-friends",
+    "name": "pokekit-pals",
     "version": "0.1.0",
     "private": true,
     "homepage": "https://pokepals.club",
@@ -27,11 +27,13 @@
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "prettier": "prettier --write './**/*.{js,jsx,json,css,scss,ts,tsx}'",
-        "eject": "react-scripts eject"
+        "prettier": "prettier --write './**/*.{js,jsx,json,css,scss,ts,tsx}'"
     },
     "eslintConfig": {
         "extends": "react-app"
+    },
+    "resolutions": {
+        "serialize-javascript": "^2.1.1"
     },
     "browserslist": {
         "production": [
