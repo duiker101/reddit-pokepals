@@ -95,7 +95,8 @@ const Code: React.FC<Props> = props => {
         window.open(post.url, "_blank");
     };
 
-    const team = post.author_flair_text.match(/Team (\w+)/);
+    const flair = post.author_flair_text || "";
+    const team = flair.match(/Team (\w+)/);
     const teamColors = {
         valor: "rgba(255,0,0,0.4)",
         mystic: "rgba(0,0,255,0.4)",
@@ -105,7 +106,7 @@ const Code: React.FC<Props> = props => {
 
     if (!!team) teamColor = teamColors[team[1].toLowerCase()];
 
-    const playerName = post.author_flair_text.match(/- ([a-zA-Z\d]+)$/);
+    const playerName = flair.match(/- ([a-zA-Z\d]+)$/);
 
     return (
         <Wrapper visited={visited.includes(code)} border={teamColor}>
