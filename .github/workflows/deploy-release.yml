@@ -50,7 +50,7 @@ jobs:
         run: |
           mv build/firebase.json .
           firebase use ${{ secrets.PROJECT_ID }} --token ${{ secrets.FIREBASE_TOKEN }}
-          firebase target:apply hosting webapp ${{ secrets.PROJECT_ID }} --token ${{ secrets.FIREBASE_TOKEN }}
+          firebase target:apply hosting webapp ${{ secrets.PROJECT_STAGING_ID }} --token ${{ secrets.FIREBASE_TOKEN }}
 
       - name: Deploy to production site
         run: firebase deploy --only hosting:webapp --non-interactive --token ${{ secrets.FIREBASE_TOKEN }} -m ${{ github.event.release.tag_name }}
