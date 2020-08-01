@@ -1,0 +1,56 @@
+name: Deploy release
+
+on:
+
+  release:
+    types: [released]
+
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout Repo
+        uses: actions/checkout@master
+
+      - name: Install Dependencies
+        run: yarn
+
+      - name: Build
+        run: yarn build
+
+      - name: Backup Firebase configurations
+        run: mv firebase.json build/
+
+      - name: Archive Production Artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: build
+          path: build
+
+  deploy:
+
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Install firebase tools
+        run: sudo npm install -g firebase-tools
+
+      - name: Download Artifact
+        uses: actions/download-artifact@master
+        with:
+          name: build
+          path: build
+
+      - name: Set up Firebase project
+        run: |
+          mv build/firebase.json .
+          firebase use ${{ secrets.PROJECT_ID }} --token ${{ secrets.FIREBASE_TOKEN }}
+          firebase target:apply hosting production ${{ secrets.PROJECT_ID }} --token ${{ secrets.FIREBASE_TOKEN }}
+
+      - name: Deploy to production site
+        run: firebase deploy --only hosting:production --non-interactive --token ${{ secrets.FIREBASE_TOKEN }} -m ${{ github.event.release.tag_name }}
