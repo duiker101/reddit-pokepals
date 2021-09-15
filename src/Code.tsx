@@ -16,10 +16,10 @@ const Wrapper = styled.div<{visited: boolean; border: string | null}>`
     padding: 10px;
     border-radius: 0.4em;
     box-shadow: 1px 1px 10px
-        ${p => (p.border ? p.border : `rgba(0, 0, 0, 0.05)`)};
+        ${(p) => (p.border ? p.border : `rgba(0, 0, 0, 0.05)`)};
     border: 1px solid rgba(0, 0, 0, 0.05);
     background: white;
-    ${p => p.visited && `opacity:.5`}
+    ${(p) => p.visited && `opacity:.5`}
     ${down("xs")} {
         grid-template-columns: 1fr 50px;
     }
@@ -65,7 +65,7 @@ const CopyImg = styled.img`
 
 const Author = styled.span``;
 
-const Code: React.FC<Props> = props => {
+const Code: React.FC<Props> = (props) => {
     const {post, code} = props;
     const [image, setImage] = useState<string | null>(null);
     const {visited, setVisited} = useVisited();
@@ -73,7 +73,7 @@ const Code: React.FC<Props> = props => {
         code.slice(0, 4) + " " + code.slice(4, 8) + " " + code.slice(8, 12);
 
     useEffect(() => {
-        QRCode.toDataURL(code).then(url => {
+        QRCode.toDataURL(code).then((url) => {
             setImage(url);
         });
     }, [code]);

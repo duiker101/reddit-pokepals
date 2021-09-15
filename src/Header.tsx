@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Wrapper = styled.div``;
 
-const Header = props => {
+const Header = (props) => {
     return <Wrapper></Wrapper>;
 };
 

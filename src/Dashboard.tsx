@@ -56,7 +56,7 @@ function Dashboard() {
     const [sort, setSort] = useState<Sort>("new");
 
     useEffect(() => {
-        getSubreddit(sort).then(r => {
+        getSubreddit(sort).then((r) => {
             setPosts(r.data.data.children.map((p: any) => p.data as Post));
         });
     }, [sort]);
@@ -88,7 +88,7 @@ function Dashboard() {
                         {label: "Hot", value: "hot"},
                     ]}
                     value={sort}
-                    onChange={v => setSort(v)}
+                    onChange={(v) => setSort(v)}
                     appearance="subtle"
                     placeholder="Sort"
                     style={{width: 100}}

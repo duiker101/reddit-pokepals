@@ -23,7 +23,7 @@ interface ContextState {
 function useContextHook(): ContextState {
     const [visited, setVisited] = useState<string[]>([]);
     useEffect(() => {
-        localforage.getItem("visited").then(v => v && setVisited(v as any));
+        localforage.getItem("visited").then((v) => v && setVisited(v as any));
     }, []);
     useEffect(() => {
         localforage.setItem("visited", visited);

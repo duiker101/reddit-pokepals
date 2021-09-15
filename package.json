@@ -1,33 +1,33 @@
 {
     "name": "pokekit-pals",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "private": true,
-    "homepage": "https://pokepals.club",
+    "homepage": "https://pals.pokekit.net",
     "dependencies": {
-        "@testing-library/jest-dom": "^4.2.4",
-        "@testing-library/react": "^9.3.2",
-        "@testing-library/user-event": "^7.1.2",
-        "axios": "^0.19.0",
-        "axios-cache-adapter": "^2.5.0",
-        "copy-to-clipboard": "^3.2.0",
-        "localforage": "^1.7.3",
-        "lodash": "^4.17.19",
-        "moment": "^2.24.0",
-        "prettier": "^1.19.1",
+        "@testing-library/jest-dom": "^5.14.1",
+        "@testing-library/react": "^12.1.0",
+        "@testing-library/user-event": "^13.2.1",
+        "axios": "^0.21.4",
+        "axios-cache-adapter": "^2.7.3",
+        "copy-to-clipboard": "^3.3.1",
+        "localforage": "^1.10.0",
+        "lodash": "^4.17.21",
+        "moment": "^2.29.1",
+        "prettier": "^2.4.0",
         "qrcode": "^1.4.4",
-        "react": "^16.12.0",
-        "react-dom": "^16.12.0",
-        "react-scripts": "3.3.0",
-        "rsuite": "^4.1.5",
-        "styled-breakpoints": "^7.1.0",
-        "styled-components": "^4.4.1",
-        "typescript": "^3.7.4"
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "react-scripts": "4.0.3",
+        "rsuite": "^4.10.3",
+        "styled-breakpoints": "^10.0.1",
+        "styled-components": "^5.3.1",
+        "typescript": "^4.4.3"
     },
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
-        "prettier": "prettier --write './**/*.{js,jsx,json,css,scss,ts,tsx}'"
+        "prettier": "prettier --write \"./**/**.{js,jsx,json,css,scss,ts,tsx}\""
     },
     "eslintConfig": {
         "extends": "react-app"
@@ -48,6 +48,6 @@
         ]
     },
     "devDependencies": {
-        "@types/styled-components": "^4.4.1"
+        "@types/styled-components": "^5.1.14"
     }
 }
